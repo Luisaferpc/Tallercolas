@@ -137,6 +137,12 @@ public class MetodosGenerales {
         
         return pc;
     } 
+
+    public Queue<ObjPC> DevolverPC(Queue<ObjPC> pc, Scanner sc){
+        
+
+        return null;
+    }
 }
 
         

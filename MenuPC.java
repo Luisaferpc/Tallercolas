@@ -42,6 +42,15 @@ public class MenuPC {
                 case 3:
                 m.ModificarPC(pc, sc);
                 break;
+
+                case 4:
+                m.DevolverPC(pc, sc);
+                break;
+
+                case 5:
+                System.out.println("Saliendo del menu de computadores\n");
+                bandera = false;
+                break;
             } 
 
      
