@@ -38,6 +38,10 @@ public class MenuPC {
                 case 2:
                 m.PrestarPC(pc, sc);
                 break;
+
+                case 3:
+                m.ModificarPC(pc, sc);
+                break;
             } 
 
      

@@ -73,21 +73,21 @@ public class MetodosGenerales {
                 while (!pc.isEmpty()) {
                     System.out.println("Ingrese el serial del computador a prestar: ");
                     serial = sc.next();
-                for (ObjPC objPC2 : pc) {
-                    while (!objPC2.getSerial().equalsIgnoreCase(serial)) {
+                for (ObjPC objPC : pc) {
+                    while (!objPC.getSerial().equalsIgnoreCase(serial)) {
                         existe = false;
                         System.out.println("El serial no existe, por favor ingrese otro: ");
                         serial = sc.next();
                     }
-                    while (objPC2.getDisponible() == false) {
+                    while (objPC.getDisponible() == false) {
                         System.out.println("El computador ya fue prestado, por favor ingrese otro: ");
                         serial = sc.next();
 
                     }
-                    objPC2.setSerial(serial);
-                    objPC2.setDisponible(false);
+                    objPC.setSerial(serial);
+                    objPC.setDisponible(false); // REVISAR, NO ESTA FUNCIONANDO CORRECTAMENTE
                     System.out.println("Nombre del usuario: ");
-                    objPC2.setNombreUsuario(sc.next());
+                    objPC.setNombreUsuario(sc.next());
                     System.out.println("Registro de prestamo exitoso\n");
                     existe = false;
                     
@@ -103,4 +103,46 @@ public class MetodosGenerales {
 
         return pc;
     }
+
+    public Queue<ObjPC> ModificarPC (Queue<ObjPC> pc, Scanner sc){
+        boolean modificado = false;
+
+                while (!pc.isEmpty()) {
+                System.out.println("Ingrese el serial del computador a modificar: ");
+                String serial = sc.next();
+                for (ObjPC objPC : pc) {
+                    if(objPC.getSerial().equalsIgnoreCase(serial)){
+                        objPC.setSerial(serial);
+                            System.out.println("Ingrese el nuevo usuario: ");
+                            objPC.setNombreUsuario(sc.next());
+                            modificado= true;
+                            System.out.println("Modificacion exitosa\n");
+                            return pc;
+                            
+                        }else {
+                            System.out.println("El serial no existe, por favor ingrese otro: ");
+                            serial = sc.next();
+                        }
+                       
+                    } 
+                    
+                
+    
+                
+            }  if (pc.isEmpty()) {
+                    System.out.println("No hay equipos para modificar\n");
+                    }
+                
+            
+        
+        return pc;
+    } 
 }
+
+        
+
+        
+    
+
+
+
