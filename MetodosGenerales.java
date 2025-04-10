@@ -69,8 +69,9 @@ public class MetodosGenerales {
         // recorrer la cola
         
 
-            while (existe) {
+            
                 while (!pc.isEmpty()) {
+                    while (existe) {
                     System.out.println("Ingrese el serial del computador a prestar: ");
                     serial = sc.next();
                 for (ObjPC objPC : pc) {
@@ -85,11 +86,12 @@ public class MetodosGenerales {
 
                     }
                     objPC.setSerial(serial);
-                    objPC.setDisponible(false); // REVISAR, NO ESTA FUNCIONANDO CORRECTAMENTE
+                    objPC.setDisponible(false); // REVISAR, NO CAMBIA A DISPONIBLE FALSE
                     System.out.println("Nombre del usuario: ");
                     objPC.setNombreUsuario(sc.next());
                     System.out.println("Registro de prestamo exitoso\n");
                     existe = false;
+                    return pc;
                     
                 }
 
@@ -139,9 +141,40 @@ public class MetodosGenerales {
     } 
 
     public Queue<ObjPC> DevolverPC(Queue<ObjPC> pc, Scanner sc){
+        String serial = "";
+        boolean existe = true;
+
+        
+            while (!pc.isEmpty()) {
+                while (existe) {
+                System.out.println("Ingrese el serial del computador a devolver: ");
+                serial = sc.next();
+            for (ObjPC objPC : pc) {
+                while (!objPC.getSerial().equalsIgnoreCase(serial)) {
+                    existe = false;
+                    System.out.println("El serial no existe, por favor ingrese otro: ");
+                    serial = sc.next();
+                }
+                objPC.setSerial(serial);
+                objPC.setDisponible(false); // REVISAR, NO CAMBIA A DISPONIBLE FALSE
+
+                System.out.println("Devolución exitosa\n");
+                existe = false;
+                return pc;
+                
+            }
+
+            break;
+        }
+
+    }
+    if (pc.isEmpty()) {
+        System.out.println("No hay equipos registrados\n");
+    }
+
         
 
-        return null;
+        return pc;
     }
 }
 
